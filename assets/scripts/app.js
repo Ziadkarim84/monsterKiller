@@ -108,7 +108,14 @@ function healHandler(){
 }
 
 function printLog(){
-    console.log(logEntry);
+    let i = 1;
+    //console.log(logEntry);
+    for(const log of logEntry){
+        console.log(`#${i++}`);
+        for(const key in log){
+            console.log(`${key} => ${log[key]}`);
+        }
+    }
 }
 
 attackBtn.addEventListener('click',attackHandler);
