@@ -2,7 +2,14 @@ const PLAYER_ATTACK_DAMAGE = 10;
 const PLAYER_STRONG_ATTACK_DAMAGE = 15;
 const MONSTER_ATTACK_DAMAGE = 15;
 const HEAL_VALUE = 8;
-let maxHealth = 100;
+
+const userInput = prompt("Enter the maximum health for you and the monster" , "100")
+let maxHealth = parseInt(userInput);
+if(isNaN(maxHealth) || maxHealth <=0){
+    maxHealth = 100;
+    alert("Wrong input type. set default value as 100");
+}
+
 let currentMonsterHealth = maxHealth;
 let currentPlayerHealth = maxHealth;
 let hasBonusLife = true;
