@@ -5,12 +5,22 @@ const HEAL_VALUE = 8;
 let maxHealth = 100;
 let currentMonsterHealth = maxHealth;
 let currentPlayerHealth = maxHealth;
+let hasBonusLife = true;
 
 adjustHealthBars(maxHealth);
 
 function endRound(){
+    let initialPlayerHealth = currentPlayerHealth;
     const playerDamage = dealPlayerDamage(MONSTER_ATTACK_DAMAGE);
     currentPlayerHealth -= playerDamage;
+
+    if(currentPlayerHealth <= 0 && hasBonusLife){
+        hasBonusLife = false;
+        removeBonusLife();
+        setPlayerHealth(initialPlayerHealth);
+        currentPlayerHealth = initialPlayerHealth;
+        alert("new life!!");
+    }
     if(currentMonsterHealth <=0 && currentPlayerHealth <=0){
         alert("DRAW!");
     } else if(currentPlayerHealth <= 0){
