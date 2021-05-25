@@ -10,11 +10,25 @@ const LOG_ENTRY_MONSTER_ATTACK = "Monster Attack";
 const LOG_ENTRY_HEAL = "Player Heal"
 const LOG_ENTRY_GAME_OVER = "Game Over";
 
-const userInput = prompt("Enter the maximum health for you and the monster" , "100")
-let maxHealth = parseInt(userInput);
-if(isNaN(maxHealth) || maxHealth <=0){
+
+
+let maxHealth;
+function getUserinput(){
+    const userInput = prompt("Enter the maximum health for you and the monster" , "100");
+    let convertedInput = parseInt(userInput);
+    if(isNaN(convertedInput) || convertedInput <=0){
+        throw{message: 'input can only be an integer'};
+    }
+
+    return convertedInput;
+}
+
+try{
+    maxHealth = getUserinput();
+} catch(error){
+    console.log(error);
     maxHealth = 100;
-    alert("Wrong input type. set default value as 100");
+    alert('default value set to 100');
 }
 
 let currentMonsterHealth = maxHealth;
